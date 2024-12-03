@@ -4,6 +4,7 @@ input = ""
 with open("aoc3data.txt") as f:
     input = f.read()
 
+# PART 1
 searchExp = r"mul\(\d{1,3}?,\d{1,3}?\)"
 
 print(re.findall(searchExp, input))
@@ -15,6 +16,7 @@ for c in commands:
 
 print(answer)
 
+# PART 2
 searchExp = r"mul\(\d{1,3}?,\d{1,3}?\)|do(?:n't)?\(\)"
 commands = [str(c) for c in re.findall(searchExp, input)]
 answer = 0
