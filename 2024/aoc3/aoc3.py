@@ -5,19 +5,21 @@ with open("aoc3data.txt") as f:
     input = f.read()
 
 # PART 1
-searchExp = r"mul\(\d{1,3}?,\d{1,3}?\)"
+# searchExp = r"mul\(\d{1,3}?,\d{1,3}?\)"
+searchExp = r"mul\((\d{1,3}),(\d{1,3})\)"
 
-print(re.findall(searchExp, input))
-commands = [[int(n) for n in c[4:-1].split(",")] for c in re.findall(searchExp, input)]
-
+# print(re.findall(searchExp, input))
+# commands = [[int(n) for n in c[4:-1].split(",")] for c in re.findall(searchExp, input)]
+commands = re.findall(searchExp, input)
 answer = 0
 for c in commands:
-    answer += c[0] * c[1]
+    answer += int(c[0]) * int(c[1])
 
 print(answer)
 
 # PART 2
 searchExp = r"mul\(\d{1,3}?,\d{1,3}?\)|do(?:n't)?\(\)"
+# searchExp = r"mul\((\d{1,3}),(\d{1,3})\)|(do(?:n't)?)\(\)"
 commands = [str(c) for c in re.findall(searchExp, input)]
 answer = 0
 do = True
